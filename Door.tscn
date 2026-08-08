@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://5yran4ffo4fy"]
+
+[ext_resource type="Texture2D" uid="uid://bj6wts8hmu1ul" path="res://Medieval_props_free (1).png" id="1_1vvux"]
+[ext_resource type="Script" uid="uid://diypwo5aulab1" path="res://door.gd" id="1_iu8q0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu8q0"]
+atlas = ExtResource("1_1vvux")
+region = Rect2(0, 0, 512, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuixy"]
+atlas = ExtResource("1_1vvux")
+region = Rect2(512, 0, 512, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbk66"]
+atlas = ExtResource("1_1vvux")
+region = Rect2(0, 200, 512, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38qdo"]
+atlas = ExtResource("1_1vvux")
+region = Rect2(512, 200, 512, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6baa"]
+atlas = ExtResource("1_1vvux")
+region = Rect2(0, 400, 512, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idmte"]
+atlas = ExtResource("1_1vvux")
+region = Rect2(512, 400, 512, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cb8qk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu8q0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuixy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbk66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38qdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6baa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idmte")
+}],
+"loop": 0,
+"name": &"Open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cb8qk"]
+size = Vector2(170.96777, 233.83873)
+
+[node name="Exit Door" type="Area2D" unique_id=896892825 groups=["doors"]]
+scale = Vector2(0.31, 0.31)
+script = ExtResource("1_iu8q0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1236178003]
+texture_filter = 1
+position = Vector2(267, 280)
+scale = Vector2(6.545, 6.545)
+sprite_frames = SubResource("SpriteFrames_cb8qk")
+animation = &"Open"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=316506292]
+position = Vector2(-14.516124, 62.08062)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_cb8qk")
+
+[node name="Timer" type="Timer" parent="." unique_id=264200320]
+wait_time = 2.5
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

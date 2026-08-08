@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmmofqivxgd0t"]
+
+[ext_resource type="Texture2D" uid="uid://balrsoqgqsbry" path="res://Medieval_props_free.png" id="1_k0s3s"]
+[ext_resource type="Script" path="res://chests.gd" id="1_vhc14"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkdim"]
+atlas = ExtResource("1_k0s3s")
+region = Rect2(300, 66, 30, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq0vi"]
+atlas = ExtResource("1_k0s3s")
+region = Rect2(327, 66, 29, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_av4sl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkdim")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq0vi")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2r30o"]
+size = Vector2(22.6667, 14.6667)
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_vhc14")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 1.66667)
+sprite_frames = SubResource("SpriteFrames_av4sl")
+animation = &"open"
+autoplay = "closed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.333333, 2)
+shape = SubResource("RectangleShape2D_2r30o")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
