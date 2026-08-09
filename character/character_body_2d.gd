@@ -8,7 +8,7 @@ const JUMP_VELOCITY = -450.0
 @onready var ladder_ray_cast = $LadderRayCast
 @onready var timer: Timer = $Timer
 
-
+var can_move : bool = true
 var is_in_trap = false
 var is_dead = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -59,21 +59,25 @@ func _movement(delta):
 		animated_sprite_2d.play("jump")
 
 
-	# Handle jump.
-	if Input.is_action_just_pressed("up") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if can_move == true: # Handle jump.
+		if Input.is_action_just_pressed("up") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * SPEED
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var direction = Input.get_axis("left", "right")
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, 16)
+
+		var isLeft = velocity.x < 0 
+		animated_sprite_2d.flip_h = isLeft  
 	else:
-		velocity.x = move_toward(velocity.x, 0, 16)
+		# 3. If can_move is false, instantly erase momentum so they don't slide
+		velocity = Vector2.ZERO # Use Vector3.ZERO for 3D games
 
-	var isLeft = velocity.x < 0 
-	animated_sprite_2d.flip_h = isLeft  
-	
+	# 4. Engine physics moves the character based on the velocity set above
 
 
 
@@ -89,6 +93,7 @@ func _on_platform_collision_area_entered(area):
 	
 	if area.is_in_group("doors"):
 		timer.start()
+		can_move = false
 		velocity.x = 0
 		velocity.y = -10
 		return
