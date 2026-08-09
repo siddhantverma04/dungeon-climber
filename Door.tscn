@@ -54,7 +54,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cb8qk"]
-size = Vector2(3.2258034, 233.83873)
+size = Vector2(16.129044, 233.83873)
 
 [node name="Exit Door" type="Area2D" unique_id=896892825 groups=["doors"]]
 scale = Vector2(0.31, 0.31)
@@ -68,7 +68,7 @@ sprite_frames = SubResource("SpriteFrames_cb8qk")
 animation = &"Open"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=316506292]
-position = Vector2(-1.6128999, 33.04834)
+position = Vector2(-11.290321, 33.04834)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_cb8qk")
 

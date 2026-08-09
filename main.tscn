@@ -773,11 +773,11 @@ position = Vector2(665, -1078)
 scale = Vector2(0.25, 0.25)
 
 [node name="AnimatableBody2D12" parent="platforms" unique_id=1337162977 instance=ExtResource("5_pdas2")]
-position = Vector2(1588, -1863)
+position = Vector2(1588, -1855)
 scale = Vector2(0.25, 0.25)
 
 [node name="AnimatableBody2D13" parent="platforms" unique_id=805961475 instance=ExtResource("5_pdas2")]
-position = Vector2(1773, -1789)
+position = Vector2(1773, -1776)
 scale = Vector2(0.25, 0.25)
 
 [node name="AnimatableBody2D14" parent="platforms" unique_id=190985693 instance=ExtResource("5_pdas2")]
@@ -926,7 +926,7 @@ position = Vector2(1649, -2251)
 rotation = 1.5707964
 
 [node name="trap14" parent="traps" unique_id=1417684962 instance=ExtResource("9_5h7te")]
-position = Vector2(1648, -2382)
+position = Vector2(1648, -2381)
 rotation = 1.5707964
 
 [node name="trap15" parent="traps" unique_id=2056789385 instance=ExtResource("9_5h7te")]
@@ -981,7 +981,7 @@ layer_0/tile_data = PackedInt32Array(524290, 131072, 1, 524291, 131072, 5, 52429
 position = Vector2(-149.00008, -2938)
 
 [node name="CharacterBody2D" parent="." unique_id=443374544 instance=ExtResource("3_hlxy7")]
-position = Vector2(-366, -2931)
+position = Vector2(129, 221)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=231467424]
 position = Vector2(16, 65)
