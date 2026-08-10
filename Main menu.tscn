@@ -1,17 +1,60 @@
 [gd_scene format=3 uid="uid://cscbqdw2qfab4"]
 
-[ext_resource type="Texture2D" uid="uid://cg5juime8ehl7" path="res://CastleOnTheMountains-Valrok.png" id="1_enwfr"]
 [ext_resource type="Script" uid="uid://bxagwsxuxke1f" path="res://main_menu.gd" id="1_um2lw"]
+[ext_resource type="Texture2D" uid="uid://cbac7cf1apxte" path="res://Untitled design (4).png" id="2_m82ya"]
 [ext_resource type="FontFile" uid="uid://drdksof6o0qux" path="res://BoldPixels.ttf" id="2_um2lw"]
+
+[sub_resource type="Animation" id="Animation_um2lw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 324)]
+}
+
+[sub_resource type="Animation" id="Animation_m82ya"]
+resource_name = "new_animation"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, 324), Vector2(579, 2030)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_juxkc"]
+_data = {
+&"RESET": SubResource("Animation_um2lw"),
+&"new_animation": SubResource("Animation_m82ya")
+}
 
 [node name="Node" type="Node" unique_id=1929499894]
 script = ExtResource("1_um2lw")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=787878280]
 texture_filter = 1
-offset_right = 1157.3334
-offset_bottom = 651.0
-texture = ExtResource("1_enwfr")
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -2620.0
+offset_top = -277.0
+offset_right = 2623.7349
+offset_bottom = 2648.0
+grow_horizontal = 2
+texture = ExtResource("2_m82ya")
 
 [node name="Label" type="Label" parent="." unique_id=998173201]
 texture_filter = 1
@@ -20,8 +63,14 @@ offset_top = 13.0
 offset_right = 621.0
 offset_bottom = 296.0
 theme_override_colors/font_color = Color(0.4946124, 0.65054303, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.38039216, 0.39607844, 0.4117647, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 14
+theme_override_constants/line_spacing = -9
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 17
 theme_override_fonts/font = ExtResource("2_um2lw")
 theme_override_font_sizes/font_size = 160
 text = "Dungeon 
@@ -32,10 +81,10 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -583.0
+offset_left = -8.0
 offset_top = -11.0
 offset_right = 18.0
-offset_bottom = 62.0
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.4931669, 0.6497581, 0.99817336, 1)
@@ -44,8 +93,39 @@ theme_override_colors/font_hover_color = Color(0.49411765, 0.6509804, 1, 1)
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("2_um2lw")
 theme_override_font_sizes/font_size = 65
-text = "Click Anywhere 
-to Start"
 flat = true
 
+[node name="Label" type="Label" parent="Button" unique_id=855347784]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 306.0
+offset_right = 620.0
+offset_bottom = 407.0
+theme_override_colors/font_color = Color(0.49411765, 0.6509804, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.38039216, 0.39607844, 0.4117647, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("2_um2lw")
+theme_override_font_sizes/font_size = 61
+text = "> Click Anywhere 
+to Start... <"
+horizontal_alignment = 1
+clip_text = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=879529703]
+position = Vector2(576, 324)
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1176557122]
+libraries/ = SubResource("AnimationLibrary_juxkc")
+
+[node name="Timer" type="Timer" parent="." unique_id=773572234]
+wait_time = 1.5
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
