@@ -1,6 +1,7 @@
 extends Area2D
 @onready var timer = $Timer
 
+@onready var game_manager: Node = $"../../Game manager"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -16,6 +17,7 @@ func _process(delta):
 func _on_body_entered(body):
 	if (body.name == "CharacterBody2D"):
 		timer.start()
+		game_manager.decrease_health()
 
 func _on_timer_timeout():
 	get_tree().reload_current_scene()

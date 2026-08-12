@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dmmofqivxgd0t" path="res://chests.tscn" id="4_limae"]
 [ext_resource type="PackedScene" uid="uid://bs07gsfvtnalf" path="res://platformer.tscn" id="5_pdas2"]
 [ext_resource type="PackedScene" uid="uid://5yran4ffo4fy" path="res://Door.tscn" id="7_272bh"]
+[ext_resource type="Script" uid="uid://dfsqx0jbsvg62" path="res://game_manager.gd" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://vrfwpe72psp3" path="res://trap.tscn" id="9_5h7te"]
+[ext_resource type="Texture2D" uid="uid://dw4v0luko5bje" path="res://heart pixel art 32x32.png" id="9_kek77"]
 
 [sub_resource type="Animation" id="Animation_kwcur"]
 length = 2.5000000000000004
@@ -65,7 +67,7 @@ _data = {
 &"new_animation_2": SubResource("Animation_272bh")
 }
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3gtnx"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kek77"]
 texture = ExtResource("3_gbs6c")
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -232,7 +234,7 @@ texture = ExtResource("3_gbs6c")
 11:15/0 = 0
 12:15/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vx6xq"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4c57u"]
 texture = ExtResource("2_25t0f")
 texture_region_size = Vector2i(13, 16)
 2:1/0 = 0
@@ -744,8 +746,8 @@ physics_layer_1/collision_layer = 2
 physics_layer_1/collision_mask = 2
 physics_layer_2/collision_layer = 4
 physics_layer_2/collision_mask = 4
-sources/0 = SubResource("TileSetAtlasSource_3gtnx")
-sources/1 = SubResource("TileSetAtlasSource_vx6xq")
+sources/0 = SubResource("TileSetAtlasSource_kek77")
+sources/1 = SubResource("TileSetAtlasSource_4c57u")
 
 [node name="Node" type="Node" unique_id=1686546789]
 metadata/_edit_vertical_guides_ = [-57.0]
@@ -988,3 +990,69 @@ position = Vector2(16, 65)
 zoom = Vector2(1.25, 1.25)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
+
+[node name="Game manager" type="Node" parent="." unique_id=158670018 node_paths=PackedStringArray("hearts")]
+script = ExtResource("8_5vw27")
+hearts = [NodePath("../UI/Hearts/HBoxContainer/Heart"), NodePath("../UI/Hearts/HBoxContainer/Heart2"), NodePath("../UI/Hearts/HBoxContainer/Heart3")]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=973410050]
+
+[node name="Panel" type="Panel" parent="UI" unique_id=90247899]
+offset_left = 32.0
+offset_top = 29.0
+offset_right = 316.0
+offset_bottom = 131.0
+
+[node name="Label" type="Label" parent="UI/Panel" unique_id=1636333356]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Points : 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hearts" type="Panel" parent="UI" unique_id=1771587457]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_top = 28.0
+offset_right = -49.0
+offset_bottom = 124.0
+grow_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Hearts" unique_id=1715708762]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -212.875
+offset_top = -30.0
+offset_right = 22.0
+offset_bottom = 31.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Heart" type="TextureRect" parent="UI/Hearts/HBoxContainer" unique_id=84070133]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("9_kek77")
+expand_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="UI/Hearts/HBoxContainer" unique_id=1639172082]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("9_kek77")
+expand_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="UI/Hearts/HBoxContainer" unique_id=1385230417]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("9_kek77")
+expand_mode = 2
