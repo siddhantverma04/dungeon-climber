@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://5yran4ffo4fy" path="res://Door.tscn" id="7_272bh"]
 [ext_resource type="Script" uid="uid://dfsqx0jbsvg62" path="res://game_manager.gd" id="8_5vw27"]
 [ext_resource type="PackedScene" uid="uid://vrfwpe72psp3" path="res://trap.tscn" id="9_5h7te"]
+[ext_resource type="FontFile" uid="uid://drdksof6o0qux" path="res://BoldPixels.ttf" id="9_efxa6"]
 [ext_resource type="Texture2D" uid="uid://dw4v0luko5bje" path="res://heart pixel art 32x32.png" id="9_kek77"]
+[ext_resource type="Texture2D" uid="uid://bi80dsx0v6250" path="res://Medieval_props_free-1.png (3).png" id="10_dg77c"]
 
 [sub_resource type="Animation" id="Animation_kwcur"]
 length = 2.5000000000000004
@@ -995,6 +997,8 @@ position_smoothing_speed = 7.0
 script = ExtResource("8_5vw27")
 hearts = [NodePath("../UI/Hearts/HBoxContainer/Heart"), NodePath("../UI/Hearts/HBoxContainer/Heart2"), NodePath("../UI/Hearts/HBoxContainer/Heart3")]
 
+[node name="Timer" type="Timer" parent="Game manager" unique_id=1237478058]
+
 [node name="UI" type="CanvasLayer" parent="." unique_id=973410050]
 
 [node name="Panel" type="Panel" parent="UI" unique_id=90247899]
@@ -1010,10 +1014,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "Points : 0"
+theme_override_fonts/font = ExtResource("9_efxa6")
+theme_override_font_sizes/font_size = 64
+text = "     = 0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI/Panel" unique_id=144459324]
+layout_mode = 0
+offset_left = -918.0
+offset_top = -345.0
+offset_right = 1099.28
+offset_bottom = 443.0
+texture = ExtResource("10_dg77c")
+expand_mode = 2
 
 [node name="Hearts" type="Panel" parent="UI" unique_id=1771587457]
 anchors_preset = 1

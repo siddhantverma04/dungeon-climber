@@ -345,6 +345,11 @@ hit_from_inside = true
 
 [node name="Timer" type="Timer" parent="." unique_id=1033667030]
 
+[node name="death timer" type="Timer" parent="." unique_id=930518907]
+
+[node name="bounce delay" type="Timer" parent="." unique_id=1441104885]
+wait_time = 0.031
+
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_animation_changed"]
 [connection signal="ready" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_ready"]
@@ -354,3 +359,5 @@ hit_from_inside = true
 [connection signal="body_entered" from="platform collision" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="platform collision" to="." method="_on_platform_collision_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="death timer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="bounce delay" to="." method="_on_bounce_delay_timeout"]

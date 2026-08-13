@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://5yran4ffo4fy"]
 
-[ext_resource type="Texture2D" uid="uid://bj6wts8hmu1ul" path="res://Medieval_props_free (1).png" id="1_1vvux"]
+[ext_resource type="Texture2D" uid="uid://be5feqwd1451c" path="res://Medieval_props_free (1).png" id="1_1vvux"]
 [ext_resource type="Script" uid="uid://diypwo5aulab1" path="res://door.gd" id="1_iu8q0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iu8q0"]
@@ -62,10 +62,12 @@ script = ExtResource("1_iu8q0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1236178003]
 texture_filter = 1
-position = Vector2(267, 280)
+position = Vector2(261.29044, 251.6128)
 scale = Vector2(6.545, 6.545)
 sprite_frames = SubResource("SpriteFrames_cb8qk")
 animation = &"Open"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=316506292]
 position = Vector2(-11.290321, 33.04834)

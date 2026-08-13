@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be5feqwd1451c"
-path="res://.godot/imported/Medieval_props_free (1).png-68846c71b95dfc3e1a8525bbd2658ad2.ctex"
+uid="uid://bi80dsx0v6250"
+path="res://.godot/imported/Medieval_props_free-1.png (3).png-e8569385d35601dffaa9ef2c3210450e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Medieval_props_free (1).png"
-dest_files=["res://.godot/imported/Medieval_props_free (1).png-68846c71b95dfc3e1a8525bbd2658ad2.ctex"]
+source_file="res://Medieval_props_free-1.png (3).png"
+dest_files=["res://.godot/imported/Medieval_props_free-1.png (3).png-e8569385d35601dffaa9ef2c3210450e.ctex"]
 
 [params]
 

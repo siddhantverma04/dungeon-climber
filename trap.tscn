@@ -1,20 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://vrfwpe72psp3"]
+[gd_scene format=3 uid="uid://vrfwpe72psp3"]
 
-[ext_resource type="Script" path="res://trap.gd" id="1_1mjax"]
+[ext_resource type="Script" uid="uid://c6s1hr3tlrd4a" path="res://trap.gd" id="1_1mjax"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_st2cs"]
 b = Vector2(-147.5, 0)
 
-[node name="trap" type="Area2D" groups=["traps"]]
+[node name="trap" type="Area2D" unique_id=1664025270 groups=["traps"]]
 position = Vector2(520, 615)
 script = ExtResource("1_1mjax")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=533963418]
 position = Vector2(67.5, 0)
 shape = SubResource("SegmentShape2D_st2cs")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 1.3
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

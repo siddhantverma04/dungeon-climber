@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -450.0
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var ladder_ray_cast = $LadderRayCast
+@onready var bounce_delay: Timer = $"bounce delay"
 @onready var timer: Timer = $Timer
 
 var can_move : bool = true
@@ -14,7 +15,8 @@ var is_dead = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-
+func jump():
+	velocity.y = JUMP_VELOCITY
 
 func _physics_process(delta):
 	var ladderCollider = ladder_ray_cast.get_collider()
@@ -39,6 +41,16 @@ func _ladder_climb(delta):
 		
 	
 func _movement(delta):
+	
+	#death
+	if is_dead == true:
+		velocity.x = 0
+		velocity.y = 50
+		animated_sprite_2d.play("die")
+		return
+	
+
+	
 	if (velocity.x > 1 || velocity.x < -1):
 		animated_sprite_2d.play("walk")
 	else:
@@ -47,11 +59,8 @@ func _movement(delta):
 		else:
 			animated_sprite_2d.play("idle")
 	
-	#death
-	if is_dead == true:
-		velocity.x = 0
-		velocity.y = 50
-		return
+	
+
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -71,8 +80,9 @@ func _movement(delta):
 		else:
 			velocity.x = move_toward(velocity.x, 0, 16)
 
-		var isLeft = velocity.x < 0 
-		animated_sprite_2d.flip_h = isLeft  
+		if is_dead == false:
+			var isLeft = velocity.x < 0 
+			animated_sprite_2d.flip_h = isLeft  
 	else:
 		# 3. If can_move is false, instantly erase momentum so they don't slide
 		velocity = Vector2.ZERO # Use Vector3.ZERO for 3D games
@@ -99,15 +109,15 @@ func _on_platform_collision_area_entered(area):
 		return
 	
 	if area.is_in_group("traps"):
-		is_in_trap = true # Turn the switch ON
-		is_dead = true
-		fade_away()
-		
+		is_in_trap = true
+		velocity.y = JUMP_VELOCITY * 2 
+
+		#bounce_delay.start()
+
 
 func _on_platform_collision_area_exited(area):
 	if area.is_in_group("traps"):
 		is_in_trap = false # Turn the switch OFF when they leave
-		is_dead = false
 	
 	
 func fade_away():
@@ -121,3 +131,18 @@ func fade_away():
 
 func _on_timer_timeout() -> void:
 	fade_away()
+	
+func dead():
+	is_dead = true
+	death_timer.start()
+
+
+@onready var death_timer: Timer = $"death timer"
+
+
+
+func _on_death_timer_timeout() -> void:
+	get_tree().reload_current_scene()
+	
+	
+#func _on_bounce_delay_timeout() -> void:

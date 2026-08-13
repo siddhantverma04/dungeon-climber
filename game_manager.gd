@@ -1,6 +1,8 @@
 extends Node
 @onready var label: Label = $"../UI/Panel/Label"
 @export var hearts : Array[Node]
+@onready var timer: Timer = $Timer
+@onready var character_body_2d: CharacterBody2D = $"../CharacterBody2D"
 var points = 0
 var lives = 3
 # Called when the node enters the scene tree for the first time.
@@ -15,8 +17,10 @@ func decrease_health():
 		else:
 			hearts[h].hide()
 	if (lives == 0):
-		get_tree().change_scene_to_file("res://Main menu.tscn")
+		character_body_2d.dead()
+	
 
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -24,6 +28,6 @@ func _process(delta: float) -> void:
 func add_point():
 	points += 1 
 	print(points)
-	label.text = "Points: " + str(points)
+	label.text = "     = " + str(points)
 
 	
