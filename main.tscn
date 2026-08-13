@@ -751,6 +751,12 @@ physics_layer_2/collision_mask = 4
 sources/0 = SubResource("TileSetAtlasSource_kek77")
 sources/1 = SubResource("TileSetAtlasSource_4c57u")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juxkc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg1fb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [node name="Node" type="Node" unique_id=1686546789]
 metadata/_edit_vertical_guides_ = [-57.0]
 
@@ -1006,6 +1012,7 @@ offset_left = 32.0
 offset_top = 29.0
 offset_right = 316.0
 offset_bottom = 131.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_juxkc")
 
 [node name="Label" type="Label" parent="UI/Panel" unique_id=1636333356]
 layout_mode = 1
@@ -1038,6 +1045,7 @@ offset_top = 28.0
 offset_right = -49.0
 offset_bottom = 124.0
 grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dg1fb")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Hearts" unique_id=1715708762]
 layout_mode = 1
