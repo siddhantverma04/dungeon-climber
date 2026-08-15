@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c6gw2nme3y4mb"]
+[gd_scene format=3 uid="uid://ciole8hrk4eib"]
 
 [ext_resource type="Script" uid="uid://cdf2s6w5y51lk" path="res://character/character_body_2d.gd" id="1_x8bpw"]
 [ext_resource type="Texture2D" uid="uid://ddoodknopsaj6" path="res://character/MiniShieldMan.png" id="2_md8yv"]
@@ -322,9 +322,10 @@ texture_filter = 1
 position = Vector2(21, -26)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2ldne")
-animation = &"CLimb"
+animation = &"jump"
 autoplay = "idle"
-frame_progress = 0.35921428
+frame = 2
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=892420051]
 position = Vector2(23, 5)

@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://drdksof6o0qux" path="res://BoldPixels.ttf" id="2_um2lw"]
 [ext_resource type="Texture2D" uid="uid://23mwaeb5lamt" path="res://Dungeon Tile Set.png" id="4_juxkc"]
 [ext_resource type="Texture2D" uid="uid://balrsoqgqsbry" path="res://Medieval_props_free.png" id="5_dg1fb"]
+[ext_resource type="AudioStream" uid="uid://dlrv1o41r2yyx" path="res://music/dragon-studio-epic-whoosh-478371 (1).mp3" id="6_dg1fb"]
 
 [sub_resource type="Animation" id="Animation_um2lw"]
 length = 0.001
@@ -20,10 +21,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(576, 324)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_juxkc"]
 resource_name = "how to play"
-length = 0.37
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -36,10 +49,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(579, 2030), Vector2(575, 3734)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_m82ya"]
 resource_name = "new_animation"
-length = 0.37
+length = 1.55
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -51,6 +76,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(576, 324), Vector2(579, 2030)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_dg1fb"]
@@ -67,6 +104,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(575, 3734), Vector2(575, 10937)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_juxkc"]
@@ -956,6 +1005,11 @@ text = "> Start <"
 flat = true
 
 [node name="Timer" type="Timer" parent="." unique_id=88659117]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=991092119]
+stream = ExtResource("6_dg1fb")
+max_distance = 9e+16
+bus = &"SFX"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Control next button" to="." method="_on_control_next_button_pressed"]

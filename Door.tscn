@@ -27,6 +27,10 @@ region = Rect2(0, 400, 512, 200)
 atlas = ExtResource("1_1vvux")
 region = Rect2(512, 400, 512, 200)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2xr8"]
+atlas = ExtResource("1_1vvux")
+region = Rect2(0, 0, 512, 200)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_cb8qk"]
 animations = [{
 "frames": [{
@@ -51,6 +55,14 @@ animations = [{
 "loop": 0,
 "name": &"Open",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2xr8")
+}],
+"loop": 0,
+"name": &"reset",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cb8qk"]
@@ -66,8 +78,7 @@ position = Vector2(261.29044, 251.6128)
 scale = Vector2(6.545, 6.545)
 sprite_frames = SubResource("SpriteFrames_cb8qk")
 animation = &"Open"
-frame = 5
-frame_progress = 1.0
+autoplay = "reset"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=316506292]
 position = Vector2(-11.290321, 33.04834)

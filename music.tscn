@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://drstwdcr6kjpv"]
+
+[ext_resource type="AudioStream" uid="uid://darf3xm82pdgy" path="res://music/dungeon_escape_medieval_seamless_loop.ogg" id="1_3h6ak"]
+
+[node name="music" type="AudioStreamPlayer2D" unique_id=1637460454]
+position = Vector2(702, 881)
+stream = ExtResource("1_3h6ak")
+max_distance = 9.223372e+18
+bus = &"Music"

@@ -1,6 +1,6 @@
 extends Area2D
 @onready var timer = $Timer
-
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var game_manager: Node = $"../../Game manager"
 
 
@@ -17,3 +17,4 @@ func _process(delta):
 func _on_body_entered(body):
 	if (body.name == "CharacterBody2D"):
 		game_manager.decrease_health()
+		audio_stream_player_2d.play()
