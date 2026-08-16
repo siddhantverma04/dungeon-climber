@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://balrsoqgqsbry" path="res://Medieval_props_free.png" id="2_25t0f"]
 [ext_resource type="Texture2D" uid="uid://23mwaeb5lamt" path="res://Dungeon Tile Set.png" id="3_gbs6c"]
-[ext_resource type="PackedScene" path="res://character/character_body_2d.tscn" id="3_hlxy7"]
+[ext_resource type="PackedScene" uid="uid://ciole8hrk4eib" path="res://character/character_body_2d.tscn" id="3_hlxy7"]
 [ext_resource type="PackedScene" uid="uid://dmmofqivxgd0t" path="res://chests.tscn" id="4_limae"]
 [ext_resource type="PackedScene" uid="uid://bs07gsfvtnalf" path="res://platformer.tscn" id="5_pdas2"]
 [ext_resource type="PackedScene" uid="uid://5yran4ffo4fy" path="res://Door.tscn" id="7_272bh"]
@@ -1028,10 +1028,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/Panel" unique_id=144459324]
+texture_filter = 1
 layout_mode = 0
-offset_left = -918.0
+offset_left = -916.0
 offset_top = -350.0
-offset_right = 1099.28
+offset_right = 1101.28
 offset_bottom = 438.0
 texture = ExtResource("10_dg77c")
 expand_mode = 2

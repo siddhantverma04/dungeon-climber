@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b33fwvigsgcvq"]
+
+[ext_resource type="AudioStream" uid="uid://dcbty1rn7ne13" path="res://music/serene_mountain_balanced_loop.ogg" id="1_2rryx"]
+
+[node name="mountain music" type="AudioStreamPlayer2D" unique_id=1206607104]
+stream = ExtResource("1_2rryx")
+max_distance = 100000000000000.0
