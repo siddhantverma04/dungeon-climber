@@ -232,7 +232,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jgst6")
 }, {
-"duration": 5.0,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_gklmx")
 }],
 "loop": 1,
@@ -322,10 +322,8 @@ texture_filter = 1
 position = Vector2(21, -26)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2ldne")
-animation = &"jump"
+animation = &"die"
 autoplay = "idle"
-frame = 2
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=892420051]
 position = Vector2(23, 5)
@@ -347,6 +345,7 @@ hit_from_inside = true
 [node name="Timer" type="Timer" parent="." unique_id=1033667030]
 
 [node name="death timer" type="Timer" parent="." unique_id=930518907]
+wait_time = 1.5
 
 [node name="bounce delay" type="Timer" parent="." unique_id=1441104885]
 wait_time = 0.031

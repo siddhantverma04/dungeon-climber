@@ -142,7 +142,8 @@ func dead():
 
 
 func _on_death_timer_timeout() -> void:
-	get_tree().reload_current_scene()
-	
+	get_tree().change_scene_to_file("res://game_over_screen.tscn")
+	MusicManager.stop_all_music()
+
 	
 #func _on_bounce_delay_timeout() -> void:

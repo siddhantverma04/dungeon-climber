@@ -69,7 +69,7 @@ _data = {
 &"new_animation_2": SubResource("Animation_272bh")
 }
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kek77"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efxa6"]
 texture = ExtResource("3_gbs6c")
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -236,7 +236,7 @@ texture = ExtResource("3_gbs6c")
 11:15/0 = 0
 12:15/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4c57u"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dg77c"]
 texture = ExtResource("2_25t0f")
 texture_region_size = Vector2i(13, 16)
 2:1/0 = 0
@@ -748,8 +748,8 @@ physics_layer_1/collision_layer = 2
 physics_layer_1/collision_mask = 2
 physics_layer_2/collision_layer = 4
 physics_layer_2/collision_mask = 4
-sources/0 = SubResource("TileSetAtlasSource_kek77")
-sources/1 = SubResource("TileSetAtlasSource_4c57u")
+sources/0 = SubResource("TileSetAtlasSource_efxa6")
+sources/1 = SubResource("TileSetAtlasSource_dg77c")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juxkc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -1029,13 +1029,16 @@ vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/Panel" unique_id=144459324]
 texture_filter = 1
-layout_mode = 0
-offset_left = -916.0
-offset_top = -350.0
-offset_right = 1101.28
-offset_bottom = 438.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.225352
+anchor_top = -3.4313726
+anchor_right = 3.8777466
+anchor_bottom = 4.2941175
+offset_bottom = 3.0517578e-05
 texture = ExtResource("10_dg77c")
 expand_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Hearts" type="Panel" parent="UI" unique_id=1771587457]
 anchors_preset = 1

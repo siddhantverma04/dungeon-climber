@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://drstwdcr6kjpv" path="res://music.tscn" id="1_tylfe"]
 [ext_resource type="PackedScene" uid="uid://b33fwvigsgcvq" path="res://mountain_music.tscn" id="3_vnq4w"]
 [ext_resource type="AudioStream" uid="uid://bhxoucblwejre" path="res://music/dungeon_chase_melodic_loop.ogg" id="4_vnq4w"]
+[ext_resource type="PackedScene" uid="uid://b2vtykx4yxw0u" path="res://win_music.tscn" id="5_0rsql"]
 
 [node name="Music manager" type="Node" unique_id=1658411568]
 script = ExtResource("1_bhb8d")
@@ -13,3 +14,6 @@ script = ExtResource("1_bhb8d")
 [node name="mountain music" parent="." unique_id=1206607104 instance=ExtResource("3_vnq4w")]
 stream = ExtResource("4_vnq4w")
 autoplay = true
+
+[node name="win music" parent="." unique_id=224431886 instance=ExtResource("5_0rsql")]
+autoplay = false
