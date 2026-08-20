@@ -29,6 +29,7 @@ MusicManager="*uid://bityjmknpaanb"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -66,4 +67,5 @@ down={
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.0862745, 0.0745098, 0.137255, 1)

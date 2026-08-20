@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b2vtykx4yxw0u"]
 
-[ext_resource type="AudioStream" uid="uid://7fx7q0dglvu2" path="res://music/brass-triumph-epic-harmony_141bpm_F.wav" id="1_upasc"]
+[ext_resource type="AudioStream" uid="uid://d0d0xh2nv8t63" path="res://music/brass-triumph-epic-harmony_141bpm_F.ogg" id="1_upasc"]
 
 [node name="win music" type="AudioStreamPlayer2D" unique_id=224431886]
 stream = ExtResource("1_upasc")
