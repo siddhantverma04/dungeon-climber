@@ -13,7 +13,8 @@ A 2D platformer built in Godot 4 as part of Hack Club's Stardance.
 - Tutorials & Assets: Inspired by Coco Code tutorials and custom/sourced tilemaps.
 
 ### How to Run / Play
-- go to this link [Clickable Text](https://hacr7.itch.io/dungeon-climber)
+- Go to this itch.io link[https://hacr7.itch.io/dungeon-climber](https://hacr7.itch.io/dungeon-climber)
+- Play the game!
 
 ### Controls
 - WASD
