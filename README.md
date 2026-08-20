@@ -1,3 +1,4 @@
+
 # Dungeon Climber 
 A 2D platformer built in Godot 4 as part of Hack Club's Stardance.
 
@@ -20,3 +21,4 @@ A 2D platformer built in Godot 4 as part of Hack Club's Stardance.
 - WASD
 - Arrow keys
 - Space to jump
+<img width="1158" height="641" alt="Screenshot 2026-08-16 095107" src="https://github.com/user-attachments/assets/6e9c45d0-e07a-4aa7-aadf-85c919369024" />
