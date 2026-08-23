@@ -1,3 +1,4 @@
+
 # Dungeon Climber 
 A 2D platformer built in Godot 4 as part of Hack Club's Stardance.
 
@@ -13,12 +14,11 @@ A 2D platformer built in Godot 4 as part of Hack Club's Stardance.
 - Tutorials & Assets: Inspired by Coco Code tutorials and custom/sourced tilemaps.
 
 ### How to Run / Play
-- Clone the repository
-- Open Godot Engine 4.
-- Click Import and select the project.godot file inside this repository folder.
-- Press F5 (or click the Play button in the top right) to run the game!🕹️
+- Go to this itch.io link [https://hacr7.itch.io/dungeon-climber](https://hacr7.itch.io/dungeon-climber)
+- Play the game!
 
 ### Controls
 - WASD
 - Arrow keys
 - Space to jump
+<img width="1158" height="641" alt="Screenshot 2026-08-16 095107" src="https://github.com/user-attachments/assets/6e9c45d0-e07a-4aa7-aadf-85c919369024" />
