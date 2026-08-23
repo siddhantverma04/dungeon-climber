@@ -309,10 +309,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v16ys"]
-radius = 9.68963
+radius = 11.6856985
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qjvr4"]
-radius = 29.1548
+radius = 34.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=2237942]
 script = ExtResource("1_x8bpw")
@@ -322,11 +322,11 @@ texture_filter = 1
 position = Vector2(21, -26)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2ldne")
-animation = &"die"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=892420051]
-position = Vector2(23, 5)
+position = Vector2(22, -1)
 scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_v16ys")
 
@@ -334,7 +334,7 @@ shape = SubResource("CircleShape2D_v16ys")
 position = Vector2(1, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform collision" unique_id=272172464]
-position = Vector2(23, 5)
+position = Vector2(21, 1)
 shape = SubResource("CircleShape2D_qjvr4")
 
 [node name="LadderRayCast" type="RayCast2D" parent="." unique_id=80294737]
