@@ -110,7 +110,9 @@ func _on_platform_collision_area_entered(area):
 	
 	if area.is_in_group("traps"):
 		is_in_trap = true
-		velocity.y = JUMP_VELOCITY * 2 
+		velocity.y = JUMP_VELOCITY * 1.8
+		
+		
 
 		#bounce_delay.start()
 
