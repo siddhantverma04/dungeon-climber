@@ -112,7 +112,8 @@ func _on_platform_collision_area_entered(area):
 		is_in_trap = true
 		velocity.y = JUMP_VELOCITY * 1.8
 		
-		
+			
+			
 
 		#bounce_delay.start()
 

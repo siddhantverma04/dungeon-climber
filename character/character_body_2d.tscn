@@ -315,6 +315,7 @@ radius = 11.6856985
 radius = 34.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=2237942]
+collision_priority = 5.0
 script = ExtResource("1_x8bpw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=500907733]

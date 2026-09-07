@@ -3,6 +3,9 @@ extends Node
 @export var hearts : Array[Node]
 @onready var timer: Timer = $Timer
 @onready var character_body_2d: CharacterBody2D = $"../CharacterBody2D"
+@onready var enemy: RigidBody2D = $"../Enemy"
+
+
 var points = 0
 var lives = 3
 # Called when the node enters the scene tree for the first time.
