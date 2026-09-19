@@ -8,12 +8,20 @@ const JUMP_VELOCITY = -450.0
 @onready var ladder_ray_cast = $LadderRayCast
 @onready var bounce_delay: Timer = $"bounce delay"
 @onready var timer: Timer = $Timer
+@onready var collision_shape_2d_2: CollisionShape2D = $CollisionShape2D2
 
+var is_attacking : bool = false
 var can_move : bool = true
 var is_in_trap = false
 var is_dead = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+func _ready() -> void:
+	# This tells the sprite to call our reset function when ANY animation finishes
+	animated_sprite_2d.animation_finished.connect(_on_animated_sprite_2d_animation_finished)
+
+
 
 func jump():
 	velocity.y = JUMP_VELOCITY
@@ -34,46 +42,44 @@ func _ladder_climb(delta):
 	if direction: velocity = direction * SPEED / 1
 	else: velocity = Vector2.ZERO
 	
-	if velocity: 
-		animated_sprite_2d.play("CLimb")
-	else:
-		animated_sprite_2d.stop()
-		
-	
+	# ONLY CHANGE ANIMATION IF NOT ATTACKING
+	if not is_attacking:
+		if velocity: 
+			animated_sprite_2d.play("CLimb")
+		else:
+			animated_sprite_2d.stop()
+
 func _movement(delta):
-	
-	#death
+	# death
 	if is_dead == true:
 		velocity.x = 0
 		velocity.y = 50
 		animated_sprite_2d.play("die")
 		return
 	
-
-	
-	if (velocity.x > 1 || velocity.x < -1):
-		animated_sprite_2d.play("walk")
-	else:
-		if is_in_trap == true:
-			animated_sprite_2d.play("die")
+	# ONLY CHANGE ANIMATION IF NOT ATTACKING
+	if not is_attacking:
+		if (velocity.x > 1 || velocity.x < -1):
+			animated_sprite_2d.play("walk")
 		else:
-			animated_sprite_2d.play("idle")
-	
-	
-
-	
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-		animated_sprite_2d.play("jump")
-
+			if is_in_trap == true:
+				animated_sprite_2d.play("die")
+			else:
+				animated_sprite_2d.play("idle")
+		
+		# Add the gravity and handle jump animation
+		if not is_on_floor():
+			velocity.y += gravity * delta
+			animated_sprite_2d.play("jump")
+	else:
+		# Still apply gravity while attacking mid-air, just don't change the animation
+		if not is_on_floor():
+			velocity.y += gravity * delta
 
 	if can_move == true: # Handle jump.
 		if Input.is_action_just_pressed("up") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
 
-		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
 		var direction = Input.get_axis("left", "right")
 		if direction:
 			velocity.x = direction * SPEED
@@ -81,13 +87,11 @@ func _movement(delta):
 			velocity.x = move_toward(velocity.x, 0, 16)
 
 		if is_dead == false:
-			var isLeft = velocity.x < 0 
-			animated_sprite_2d.flip_h = isLeft  
+			if direction != 0:
+				animated_sprite_2d.flip_h = (direction < 0)
 	else:
-		# 3. If can_move is false, instantly erase momentum so they don't slide
-		velocity = Vector2.ZERO # Use Vector3.ZERO for 3D games
+		velocity = Vector2.ZERO
 
-	# 4. Engine physics moves the character based on the velocity set above
 
 
 
@@ -149,4 +153,14 @@ func _on_death_timer_timeout() -> void:
 	MusicManager.stop_all_music()
 
 	
-#func _on_bounce_delay_timeout() -> void:
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_L and not is_attacking and not is_dead:
+			is_attacking = true
+			animated_sprite_2d.play("attack")
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if animated_sprite_2d.animation == "attack":
+		is_attacking = false
+
+			

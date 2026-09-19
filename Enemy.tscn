@@ -34,6 +34,38 @@ region = Rect2(160, 128, 32, 32)
 atlas = ExtResource("1_tt7e2")
 region = Rect2(192, 128, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_smfg5"]
+atlas = ExtResource("1_tt7e2")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdb26"]
+atlas = ExtResource("1_tt7e2")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn8ps"]
+atlas = ExtResource("1_tt7e2")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1k6s"]
+atlas = ExtResource("1_tt7e2")
+region = Rect2(96, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir673"]
+atlas = ExtResource("1_tt7e2")
+region = Rect2(128, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nenbi"]
+atlas = ExtResource("1_tt7e2")
+region = Rect2(128, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nexad"]
+atlas = ExtResource("1_tt7e2")
+region = Rect2(128, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grakr"]
+atlas = ExtResource("1_tt7e2")
+region = Rect2(128, 224, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_52xpa"]
 atlas = ExtResource("1_tt7e2")
 region = Rect2(0, 0, 32, 32)
@@ -116,6 +148,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_smfg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdb26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn8ps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1k6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir673")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nenbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nexad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grakr")
+}],
+"loop": 0,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_52xpa")
 }, {
 "duration": 1.0,
@@ -166,19 +227,81 @@ animations = [{
 }],
 "loop": 1,
 "name": &"walk",
-"speed": 9.0
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d14se"]
 size = Vector2(4, 44)
 
-[node name="RigidBody2D" type="RigidBody2D" unique_id=1517605329 groups=["traps"]]
+[sub_resource type="Animation" id="Animation_s7bn3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2hac7"]
+resource_name = "walking"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e6d4v"]
+_data = {
+&"RESET": SubResource("Animation_s7bn3"),
+&"walking": SubResource("Animation_2hac7")
+}
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=1517605329]
+position = Vector2(-173, 0)
 script = ExtResource("1_s7bn3")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=812826473]
 position = Vector2(3, 28)
 shape = SubResource("RectangleShape2D_cb8qk")
-one_way_collision = true
 one_way_collision_direction = Vector2(0, -1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=813719574]
@@ -186,7 +309,7 @@ texture_filter = 1
 position = Vector2(2.4999995, -10.499999)
 scale = Vector2(4.03125, 4.03125)
 sprite_frames = SubResource("SpriteFrames_cb8qk")
-animation = &"attack"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=421139264]
@@ -202,11 +325,18 @@ one_way_collision_direction = Vector2(0, -1)
 position = Vector2(21, 28)
 shape = SubResource("RectangleShape2D_d14se")
 
-[node name="Timer" type="Timer" parent="." unique_id=1956165912]
+[node name="damage timer" type="Timer" parent="." unique_id=1956165912]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=902369967]
+libraries/ = SubResource("AnimationLibrary_e6d4v")
+autoplay = &"walking"
+
+[node name="Die timer" type="Timer" parent="." unique_id=1986583667]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
 [connection signal="area_exited" from="Area2D2" to="." method="_on_area_2d_2_area_exited"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="damage timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Die timer" to="." method="_on_die_timer_timeout"]
