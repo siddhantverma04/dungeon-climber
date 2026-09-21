@@ -155,7 +155,7 @@ func _on_death_timer_timeout() -> void:
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_L and not is_attacking and not is_dead:
+		if Input.is_action_just_pressed("attack") and not is_attacking and not is_dead:
 			is_attacking = true
 			animated_sprite_2d.play("attack")
 

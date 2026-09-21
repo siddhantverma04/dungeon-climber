@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://b5i6jgqmdh1ww"]
+
+[ext_resource type="Texture2D" uid="uid://dx3c6wcntdtuq" path="res://MiniFox.png" id="1_8x0u3"]
+[ext_resource type="Script" uid="uid://ivl5cq5ohm1l" path="res://fox.gd" id="1_kpck0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpck0"]
+atlas = ExtResource("1_8x0u3")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0xb2"]
+atlas = ExtResource("1_8x0u3")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxxu0"]
+atlas = ExtResource("1_8x0u3")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyljk"]
+atlas = ExtResource("1_8x0u3")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x0u3"]
+atlas = ExtResource("1_8x0u3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_somxj"]
+atlas = ExtResource("1_8x0u3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcpmy"]
+atlas = ExtResource("1_8x0u3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slltw"]
+atlas = ExtResource("1_8x0u3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d14se"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpck0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0xb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxxu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyljk")
+}],
+"loop": 1,
+"name": &"Walk",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x0u3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_somxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcpmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slltw")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d14se"]
+size = Vector2(75, 48)
+
+[node name="RigidBody2D" type="Area2D" unique_id=1118100484]
+script = ExtResource("1_kpck0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=313843308]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_d14se")
+animation = &"Walk"
+autoplay = "Walk"
+frame_progress = 0.09851006
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1758666911]
+position = Vector2(-5.5, 36)
+shape = SubResource("RectangleShape2D_d14se")
+
+[node name="flip" type="Timer" parent="." unique_id=1084636888]
+wait_time = 2.0
+one_shot = true
+
+[node name="unflip" type="Timer" parent="." unique_id=624105664]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="flip" to="." method="_on_flip_timeout"]
+[connection signal="timeout" from="unflip" to="." method="_on_unflip_timeout"]
