@@ -15,4 +15,4 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_timer_timeout() -> void:
 	MusicManager.transition_to_win_music(2.0)
-	get_tree().change_scene_to_file("res://win screen.tscn")
+	get_tree().change_scene_to_file("res://level_2.tscn")

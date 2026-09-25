@@ -953,8 +953,8 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 11
 theme_override_fonts/font = ExtResource("2_um2lw")
 theme_override_font_sizes/font_size = 90
-text = "WASD + Arrow keys
-Space to Jump"
+text = "WASD or Arrow keys
+L to Attack"
 horizontal_alignment = 1
 
 [node name="How to play title" type="Label" parent="." unique_id=279199833]
