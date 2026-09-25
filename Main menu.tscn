@@ -1009,7 +1009,6 @@ flat = true
 [node name="sound effect" type="AudioStreamPlayer2D" parent="." unique_id=991092119]
 stream = ExtResource("6_dg1fb")
 max_distance = 9e+16
-bus = &"SFX"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Control next button" to="." method="_on_control_next_button_pressed"]
