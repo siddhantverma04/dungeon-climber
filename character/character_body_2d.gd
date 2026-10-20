@@ -162,5 +162,5 @@ func _input(event: InputEvent) -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "attack":
 		is_attacking = false
-
+		
 			
