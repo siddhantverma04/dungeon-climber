@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://rwrs8sccf6mo"]
+
+[ext_resource type="Texture2D" uid="uid://defth47u0aecx" path="res://caslePropsSheet.png" id="1_2iyem"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ync5d"]
+atlas = ExtResource("1_2iyem")
+region = Rect2(70, 128, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05pf3"]
+atlas = ExtResource("1_2iyem")
+region = Rect2(454, 128, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1jxp"]
+atlas = ExtResource("1_2iyem")
+region = Rect2(838, 128, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuosl"]
+atlas = ExtResource("1_2iyem")
+region = Rect2(1222, 128, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujg7t"]
+atlas = ExtResource("1_2iyem")
+region = Rect2(1606, 128, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cb8qk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ync5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05pf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1jxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuosl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujg7t")
+}],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D" unique_id=1034525748]
+scale = Vector2(3, 3)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=910038287]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_cb8qk")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.10690153

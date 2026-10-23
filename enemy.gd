@@ -4,9 +4,9 @@ extends RigidBody2D
 @onready var area_2d: Area2D = $Area2D
 @onready var timer: Timer = $Timer
 @onready var area_2d_2: Area2D = $Area2D2
-@onready var game_manager: Node = $"../../Game manager"
 @onready var damage_timer: Timer = $"damage timer"
 @onready var die_timer: Timer = $"Die timer"
+@onready var game_manager: Node = $"../Game manager"
 
 var can_damage = true
 var player_touching = false
@@ -34,7 +34,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		animated_sprite_2d.play("attack")
 		animated_sprite_2d.flip_h = true
 		player_touching = true
-
+		if Input.is_key_pressed(KEY_L):
+			animated_sprite_2d.play("die")
+			return
 		if can_damage:
 			can_damage = false
 			game_manager.decrease_health()

@@ -12,9 +12,12 @@ func _on_timer_timeout() -> void:
 	var current_scene_path = get_tree().current_scene.scene_file_path
 	
 	# If the current file path matches level_2, switch to the win screen
-	if current_scene_path == "res://level_2.tscn":
+	if current_scene_path == "res://level_3.tscn":
 		MusicManager.transition_to_win_music(2.0)
 		get_tree().change_scene_to_file("res://win screen.tscn")
 	else:
-		# Otherwise (if we are on the main level), go to level 2
-		get_tree().change_scene_to_file("res://level_2.tscn")
+		if current_scene_path == "res://level_2.tscn":
+			# Otherwise (if we are on the main level), go to level 2
+			get_tree().change_scene_to_file("res://level_3.tscn")
+		else: 
+			get_tree().change_scene_to_file("res://level_2.tscn")
