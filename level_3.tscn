@@ -8,11 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://defth47u0aecx" path="res://caslePropsSheet.png" id="6_fmu3g"]
 [ext_resource type="PackedScene" uid="uid://rwrs8sccf6mo" path="res://banner.tscn" id="7_fmu3g"]
 [ext_resource type="PackedScene" uid="uid://ciole8hrk4eib" path="res://character/character_body_2d.tscn" id="8_7ds5r"]
-[ext_resource type="PackedScene" uid="uid://d15bfxvhrhs0p" path="res://Soldier.tscn" id="9_liaj6"]
 [ext_resource type="Script" uid="uid://dfsqx0jbsvg62" path="res://game_manager.gd" id="10_b60u5"]
 [ext_resource type="FontFile" uid="uid://drdksof6o0qux" path="res://BoldPixels.ttf" id="11_ghrvs"]
 [ext_resource type="Texture2D" uid="uid://bi80dsx0v6250" path="res://Medieval_props_free-1.png (3).png" id="12_jvy75"]
 [ext_resource type="Texture2D" uid="uid://dw4v0luko5bje" path="res://heart pixel art 32x32.png" id="13_g0tlw"]
+[ext_resource type="PackedScene" uid="uid://duw8nuom24rjg" path="res://Enemy.tscn" id="13_ghrvs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6p2dc"]
 texture = ExtResource("1_16pka")
@@ -919,9 +919,6 @@ position = Vector2(116.00001, 300)
 [node name="Banner2" parent="." unique_id=1455870739 instance=ExtResource("7_fmu3g")]
 position = Vector2(478, 300)
 
-[node name="Area2D" parent="." unique_id=1325385535 instance=ExtResource("9_liaj6")]
-position = Vector2(1350, 269)
-
 [node name="CharacterBody2D" parent="." unique_id=2237942 instance=ExtResource("8_7ds5r")]
 position = Vector2(278, 441)
 
@@ -933,7 +930,7 @@ position_smoothing_speed = 7.0
 
 [node name="Game manager" type="Node" parent="." unique_id=715825283 node_paths=PackedStringArray("hearts")]
 script = ExtResource("10_b60u5")
-hearts = [null, null, null]
+hearts = [NodePath("../UI/Hearts/HBoxContainer/Heart"), NodePath("../UI/Hearts/HBoxContainer/Heart3"), NodePath("../UI/Hearts/HBoxContainer/Heart2")]
 
 [node name="Timer" type="Timer" parent="Game manager" unique_id=862042028]
 
@@ -1014,3 +1011,8 @@ texture_filter = 1
 layout_mode = 2
 texture = ExtResource("13_g0tlw")
 expand_mode = 2
+
+[node name="enemies" type="Node" parent="." unique_id=1587696988]
+
+[node name="enemy" parent="enemies" unique_id=1517605329 instance=ExtResource("13_ghrvs")]
+position = Vector2(1312, 268)

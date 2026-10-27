@@ -1,36 +1,50 @@
 extends Node
+
+@export var hearts: Array[Node]
+
 @onready var label: Label = $"../UI/Panel/Label"
-@export var hearts : Array[Node]
-@onready var timer: Timer = $Timer
 @onready var character_body_2d: CharacterBody2D = $"../CharacterBody2D"
-@onready var enemy: RigidBody2D = $"../Enemy"
 
 
-var points = 0
-var lives = 3
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var points:
+	get:
+		return GameState.points
+	set(value):
+		GameState.points = value
+
+
+var lives:
+	get:
+		return GameState.lives
+	set(value):
+		GameState.lives = value
+
+
+func _ready():
+	update_ui()
+
 
 func decrease_health():
 	lives -= 1
-	for h in 3:
-		if (h < lives):
+
+	update_ui()
+
+	if lives <= 0:
+		character_body_2d.dead()
+
+
+func add_point():
+	points += 1
+	print(points)
+
+	update_ui()
+
+
+func update_ui():
+	label.text = " = " + str(points)
+
+	for h in range(hearts.size()):
+		if h < lives:
 			hearts[h].show()
 		else:
 			hearts[h].hide()
-	if (lives == 0):
-		character_body_2d.dead()
-	
-
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
-func add_point():
-	points += 1 
-	print(points)
-	label.text = "     = " + str(points)
-
-	

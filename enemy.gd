@@ -6,8 +6,7 @@ extends RigidBody2D
 @onready var area_2d_2: Area2D = $Area2D2
 @onready var damage_timer: Timer = $"damage timer"
 @onready var die_timer: Timer = $"Die timer"
-@onready var game_manager: Node = $"../Game manager"
-
+@onready var game_manager: Node = $"../../Game manager"
 var can_damage = true
 var player_touching = false
 

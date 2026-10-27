@@ -27,6 +27,7 @@ buses/default_bus_layout="uid://8ya1fl35vg2"
 
 MusicManager="*uid://bityjmknpaanb"
 Dialogic="*uid://ds2q0uclmolvu"
+GameState="*uid://cw6teyutv25u"
 
 [dialogic]
 

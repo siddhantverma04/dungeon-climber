@@ -9,7 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://wcrooghh6kjf" path="res://villager.tscn" id="7_7dov7"]
 [ext_resource type="PackedScene" uid="uid://b5i6jgqmdh1ww" path="res://fox.tscn" id="7_7j8ne"]
 [ext_resource type="PackedScene" uid="uid://5yran4ffo4fy" path="res://Door.tscn" id="9_15wb7"]
-[ext_resource type="PackedScene" uid="uid://d15bfxvhrhs0p" path="res://Soldier.tscn" id="9_ehv2h"]
+[ext_resource type="Script" uid="uid://dfsqx0jbsvg62" path="res://game_manager.gd" id="10_xbcdb"]
+[ext_resource type="FontFile" uid="uid://drdksof6o0qux" path="res://BoldPixels.ttf" id="11_s77qv"]
+[ext_resource type="Texture2D" uid="uid://bi80dsx0v6250" path="res://Medieval_props_free-1.png (3).png" id="12_5hnhx"]
+[ext_resource type="Texture2D" uid="uid://dw4v0luko5bje" path="res://heart pixel art 32x32.png" id="13_78pok"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_15wb7"]
 texture = ExtResource("1_n7ypv")
@@ -1413,6 +1416,12 @@ _data = {
 &"new_animation": SubResource("Animation_eoq84")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvfll"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcnlr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [node name="level 2" type="Node" unique_id=1479242104]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1880945774]
@@ -1494,8 +1503,6 @@ autoplay = &"new_animation"
 [node name="Villager" parent="." unique_id=1536998827 instance=ExtResource("7_7dov7")]
 position = Vector2(5968.0005, 774)
 
-[node name="Soldier" parent="." unique_id=1325385535 instance=ExtResource("9_ehv2h")]
-
 [node name="Exit Door" parent="." unique_id=896892825 instance=ExtResource("9_15wb7")]
 position = Vector2(10928, 752)
 
@@ -1507,3 +1514,87 @@ position = Vector2(24, -60)
 zoom = Vector2(1.25, 1.25)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
+
+[node name="Game manager" type="Node" parent="." unique_id=1392522150 node_paths=PackedStringArray("hearts")]
+script = ExtResource("10_xbcdb")
+hearts = [NodePath("../UI/Hearts/HBoxContainer/Heart"), NodePath("../UI/Hearts/HBoxContainer/Heart3"), NodePath("../UI/Hearts/HBoxContainer/Heart2")]
+
+[node name="Timer" type="Timer" parent="Game manager" unique_id=1992977971]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=404972543]
+
+[node name="Panel" type="Panel" parent="UI" unique_id=980683215]
+offset_left = 32.0
+offset_top = 29.0
+offset_right = 316.0
+offset_bottom = 131.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lvfll")
+
+[node name="Label" type="Label" parent="UI/Panel" unique_id=1418751635]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_s77qv")
+theme_override_font_sizes/font_size = 64
+text = "     = 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="UI/Panel" unique_id=982954066]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -3.225352
+anchor_top = -3.4313726
+anchor_right = 3.8777466
+anchor_bottom = 4.2941175
+offset_bottom = 3.0517578e-05
+texture = ExtResource("12_5hnhx")
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Hearts" type="Panel" parent="UI" unique_id=2057384890]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -288.0
+offset_top = 28.0
+offset_right = -49.0
+offset_bottom = 124.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jcnlr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Hearts" unique_id=908746628]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -212.875
+offset_top = -30.0
+offset_right = 22.0
+offset_bottom = 31.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Heart" type="TextureRect" parent="UI/Hearts/HBoxContainer" unique_id=197118817]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("13_78pok")
+expand_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="UI/Hearts/HBoxContainer" unique_id=1002403044]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("13_78pok")
+expand_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="UI/Hearts/HBoxContainer" unique_id=1757870106]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("13_78pok")
+expand_mode = 2
