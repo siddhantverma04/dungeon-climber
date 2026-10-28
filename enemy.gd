@@ -2,7 +2,6 @@ extends RigidBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var area_2d: Area2D = $Area2D
-@onready var timer: Timer = $Timer
 @onready var area_2d_2: Area2D = $Area2D2
 @onready var damage_timer: Timer = $"damage timer"
 @onready var die_timer: Timer = $"Die timer"

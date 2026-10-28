@@ -140,6 +140,9 @@ func _on_timer_timeout() -> void:
 	fade_away()
 	
 func dead():
+	if is_dead:
+		return
+
 	is_dead = true
 	death_timer.start()
 

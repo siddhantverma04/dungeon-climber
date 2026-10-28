@@ -25,6 +25,10 @@ func _ready():
 
 
 func decrease_health():
+
+	if lives <= 0:
+		return
+
 	lives -= 1
 
 	update_ui()

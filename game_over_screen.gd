@@ -14,10 +14,12 @@ func _process(delta: float) -> void:
 
 
 func _on_retry_pressed() -> void:
+	GameState.reset_game()
 	get_tree().change_scene_to_file("res://main.tscn")
 	MusicManager.transition_to_regular_music(2.0)
 
 
 func _on_quit_pressed() -> void:
+	GameState.reset_game()
 	get_tree().change_scene_to_file("res://Main menu.tscn")
 	MusicManager.transition_to_mountain_music(2.0)

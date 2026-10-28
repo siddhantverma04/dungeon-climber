@@ -4,6 +4,7 @@ extends Node
 @onready var mountain_music: AudioStreamPlayer2D = $"mountain music"
 @onready var music: AudioStreamPlayer2D = $music
 
+var current_tween: Tween
 # Transitions to mountain music from whatever is currently playing
 func transition_to_mountain_music(fade_time: float = 1.0) -> void:
 	_crossfade_from_current(mountain_music, fade_time)
@@ -18,37 +19,73 @@ func transition_to_win_music(fade_time: float = 1.0) -> void:
 
 # Call this function to fade out and stop ALL music safely
 func stop_all_music(fade_time: float = 1.0) -> void:
-	var tween = create_tween().set_parallel(true)
-	var all_players = [music, mountain_music, win_music]
-	
-	for player in all_players:
-		if is_instance_valid(player) and player.playing:
-			tween.tween_property(player, "volume_db", -80.0, fade_time)
-			tween.chain().tween_callback(player.stop)
 
-# Helper function that finds any active playing music and fades it out while fading the target in
+	# Cancel an old transition first
+	if current_tween != null and current_tween.is_valid():
+		current_tween.kill()
+
+	var all_players = [music, mountain_music, win_music]
+
+	current_tween = create_tween()
+	current_tween.set_parallel(true)
+
+	for player in all_players:
+		if player.playing:
+			current_tween.tween_property(
+				player,
+				"volume_db",
+				-80.0,
+				fade_time
+			)
+
+	current_tween.finished.connect(
+		func():
+			for player in all_players:
+				player.stop()
+	)
+	
 func _crossfade_from_current(to_player: AudioStreamPlayer2D, duration: float) -> void:
-	# If the node doesn't exist, stop immediately to avoid crash
+
+	# Cancel any old music transition
+	if current_tween != null and current_tween.is_valid():
+		current_tween.kill()
+
 	if not is_instance_valid(to_player):
 		return
-		
-	# If the target is already the only thing playing, do nothing
-	if to_player.playing and to_player.volume_db >= 0.0:
-		return
 
-	# Start the target track silently
+	var all_players = [music, mountain_music, win_music]
+
+	# Make sure the target music is playing
 	if not to_player.playing:
 		to_player.volume_db = -80.0
 		to_player.play()
-	
-	var tween = create_tween().set_parallel(true)
-	
-	# Fade in the target track
-	tween.tween_property(to_player, "volume_db", 0.0, duration)
-	
-	# Dynamically find ANY stream player that is playing and fade it out (except the target)
-	var all_players = [music, mountain_music, win_music]
+
+	current_tween = create_tween()
+	current_tween.set_parallel(true)
+
+	# Fade target music in
+	current_tween.tween_property(
+		to_player,
+		"volume_db",
+		0.0,
+		duration
+	)
+
+	# Fade every other track out
 	for player in all_players:
-		if is_instance_valid(player) and player != to_player and player.playing:
-			tween.tween_property(player, "volume_db", -80.0, duration)
-			tween.chain().tween_callback(player.stop)
+		if player != to_player and player.playing:
+			current_tween.tween_property(
+				player,
+				"volume_db",
+				-80.0,
+				duration
+			)
+
+	# When THIS transition finishes, stop the other tracks
+	current_tween.finished.connect(
+		func():
+			for player in all_players:
+				if player != to_player:
+					player.stop()
+	)
+	
