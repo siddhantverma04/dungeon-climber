@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ddv28nbfcl6du"]
 
 [ext_resource type="Texture2D" uid="uid://du3kuvy8vg8p1" path="res://MiniKingMan.png" id="1_5q13b"]
+[ext_resource type="Script" uid="uid://b0f7jlfuxveyt" path="res://king.gd" id="1_rmyy5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmyy5"]
 atlas = ExtResource("1_5q13b")
@@ -292,14 +293,14 @@ size = Vector2(11, 12.000006)
 
 [node name="Area2D" type="Area2D" unique_id=1325385535]
 scale = Vector2(3.5, 3.5)
+script = ExtResource("1_rmyy5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=184364406]
 texture_filter = 1
 position = Vector2(0, -1.4901161e-08)
 sprite_frames = SubResource("SpriteFrames_b60u5")
-animation = &"attack"
-frame = 9
-frame_progress = 1.0
+animation = &"idle"
+autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1209784144]
 position = Vector2(0.5000003, 8.8571415)
