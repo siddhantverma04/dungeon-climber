@@ -303,6 +303,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1209784144]
+visible = false
 position = Vector2(0.5000003, 8.8571415)
 scale = Vector2(0.9999996, 0.9999996)
 shape = SubResource("RectangleShape2D_kmy7e")

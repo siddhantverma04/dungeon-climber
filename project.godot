@@ -32,11 +32,13 @@ GameState="*uid://cw6teyutv25u"
 [dialogic]
 
 directories/dch_directory={
-"Villager": "res://Villager.dch"
+"Villager": "res://Villager.dch",
+"king": "res://king.dch"
 }
 directories/dtl_directory={
 "VillagerMission": "res://VillagerMission.dtl",
-"VillagerRepeat": "res://VillagerRepeat.dtl"
+"VillagerRepeat": "res://VillagerRepeat.dtl",
+"king": "res://king.dtl"
 }
 layout/style_directory={}
 layout/style_list=[]

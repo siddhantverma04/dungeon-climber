@@ -52,3 +52,7 @@ func update_ui():
 			hearts[h].show()
 		else:
 			hearts[h].hide()
+
+
+func _on_king_chamber_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.

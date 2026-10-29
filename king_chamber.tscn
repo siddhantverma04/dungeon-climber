@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cd83u522aek8d"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_d14se"]
+a = Vector2(-7, -172)
+b = Vector2(-7, 69)
+
+[node name="king chamber" type="Area2D" unique_id=593215869]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1162401677]
+position = Vector2(-163, 42)
+shape = SubResource("SegmentShape2D_d14se")
