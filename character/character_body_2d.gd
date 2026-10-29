@@ -10,6 +10,7 @@ const JUMP_VELOCITY = -450.0
 @onready var timer: Timer = $Timer
 @onready var collision_shape_2d_2: CollisionShape2D = $CollisionShape2D2
 
+
 var is_attacking : bool = false
 var can_move : bool = true
 var is_in_trap = false
@@ -166,4 +167,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite_2d.animation == "attack":
 		is_attacking = false
 		
-			
+func _king_speech() -> void:
+	can_move = false
