@@ -1082,7 +1082,7 @@ position = Vector2(3758.0002, 170)
 position = Vector2(-152, -289)
 
 [node name="king chamber" parent="." unique_id=593215869 instance=ExtResource("19_ra6nl")]
-position = Vector2(631, -351)
+position = Vector2(483, -351)
 script = ExtResource("20_gxey3")
 
 [node name="CharacterBody2D" parent="." unique_id=2237942 instance=ExtResource("8_7ds5r")]
@@ -1094,4 +1094,4 @@ zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
-[connection signal="area_entered" from="king chamber" to="king chamber" method="_on_area_entered"]
+[connection signal="body_entered" from="king chamber" to="king chamber" method="_on_body_entered"]

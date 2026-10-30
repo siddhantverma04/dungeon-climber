@@ -169,3 +169,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		
 func _king_speech() -> void:
 	can_move = false
+	
+func king_speech_over() -> void:
+	can_move = true

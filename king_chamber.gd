@@ -4,8 +4,7 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	Dialogic.text_signal.connect(DialogicSignal)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -18,7 +17,9 @@ func _on_body_entered(body: Node2D) -> void:
 		body._king_speech()
 		run_dialogue("king")
 
-
+func DialogicSignal(arg: String):
+	if arg == "finish_speech":
+		character_body_2d.king_speech_over()
 
 func run_dialogue(dialogue_string):
 	Dialogic.start(dialogue_string)
