@@ -32,7 +32,13 @@ func stop_all_music(fade_time: float = 1.0) -> void:
 	if current_tween != null and current_tween.is_valid():
 		current_tween.kill()
 
-	var all_players = [music, mountain_music, win_music]
+	var all_players = [
+		music,
+		mountain_music,
+		win_music,
+		level_2_music,
+		level_3_music
+	]
 
 	current_tween = create_tween()
 	current_tween.set_parallel(true)
@@ -61,7 +67,13 @@ func _crossfade_from_current(to_player: AudioStreamPlayer2D, duration: float) ->
 	if not is_instance_valid(to_player):
 		return
 
-	var all_players = [music, mountain_music, win_music]
+	var all_players = [
+	music,
+	mountain_music,
+	win_music,
+	level_2_music,
+	level_3_music
+]
 
 	# Make sure the target music is playing
 	if not to_player.playing:
