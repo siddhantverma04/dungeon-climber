@@ -3,6 +3,8 @@ extends Node
 @onready var win_music: AudioStreamPlayer2D = $"win music"
 @onready var mountain_music: AudioStreamPlayer2D = $"mountain music"
 @onready var music: AudioStreamPlayer2D = $music
+@onready var level_2_music: AudioStreamPlayer2D = $"level 2 music"
+@onready var level_3_music: AudioStreamPlayer2D = $"level 3 music"
 
 var current_tween: Tween
 # Transitions to mountain music from whatever is currently playing
@@ -16,7 +18,13 @@ func transition_to_regular_music(fade_time: float = 1.0) -> void:
 # Transitions to win music from whatever is currently playing
 func transition_to_win_music(fade_time: float = 1.0) -> void:
 	_crossfade_from_current(win_music, fade_time)
+	
+func transition_to_lvl2_music(fade_time: float = 1.0) -> void:
+	_crossfade_from_current(level_2_music, fade_time)
 
+func transition_to_lvl3_music(fade_time: float = 1.0) -> void:
+	_crossfade_from_current(level_3_music, fade_time)
+	
 # Call this function to fade out and stop ALL music safely
 func stop_all_music(fade_time: float = 1.0) -> void:
 

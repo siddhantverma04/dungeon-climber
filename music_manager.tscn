@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b33fwvigsgcvq" path="res://mountain_music.tscn" id="3_vnq4w"]
 [ext_resource type="AudioStream" uid="uid://bhxoucblwejre" path="res://music/dungeon_chase_melodic_loop.ogg" id="4_vnq4w"]
 [ext_resource type="PackedScene" uid="uid://b2vtykx4yxw0u" path="res://win_music.tscn" id="5_0rsql"]
+[ext_resource type="AudioStream" uid="uid://cnpl1fpuhirju" path="res://music/level2_outside_medieval_companion_loop.ogg" id="6_bycfj"]
+[ext_resource type="AudioStream" uid="uid://dey3w5g7fvank" path="res://music/level3_grand_castle_medieval_loop.ogg" id="7_vga7j"]
 
 [node name="Music manager" type="Node" unique_id=1658411568]
 script = ExtResource("1_bhb8d")
@@ -16,4 +18,12 @@ stream = ExtResource("4_vnq4w")
 autoplay = true
 
 [node name="win music" parent="." unique_id=224431886 instance=ExtResource("5_0rsql")]
+autoplay = false
+
+[node name="level 2 music" parent="." unique_id=1856565915 instance=ExtResource("5_0rsql")]
+stream = ExtResource("6_bycfj")
+autoplay = false
+
+[node name="level 3 music" parent="." unique_id=824533483 instance=ExtResource("5_0rsql")]
+stream = ExtResource("7_vga7j")
 autoplay = false

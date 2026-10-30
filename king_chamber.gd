@@ -20,6 +20,7 @@ func _on_body_entered(body: Node2D) -> void:
 func DialogicSignal(arg: String):
 	if arg == "finish_speech":
 		character_body_2d.king_speech_over()
+		queue_free()
 
 func run_dialogue(dialogue_string):
 	Dialogic.start(dialogue_string)

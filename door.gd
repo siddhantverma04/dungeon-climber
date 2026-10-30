@@ -18,6 +18,8 @@ func _on_timer_timeout() -> void:
 	else:
 		if current_scene_path == "res://level_2.tscn":
 			# Otherwise (if we are on the main level), go to level 2
+			MusicManager.transition_to_lvl3_music(2.0)
 			get_tree().change_scene_to_file("res://level_3.tscn")
 		else: 
+			MusicManager.transition_to_lvl2_music(2.0)
 			get_tree().change_scene_to_file("res://level_2.tscn")

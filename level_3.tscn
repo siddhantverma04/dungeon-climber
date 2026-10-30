@@ -1009,7 +1009,7 @@ expand_mode = 2
 [node name="enemies" type="Node" parent="." unique_id=1587696988]
 
 [node name="enemy" parent="enemies" unique_id=1517605329 instance=ExtResource("13_ghrvs")]
-position = Vector2(1312, 268)
+position = Vector2(1494, 270)
 
 [node name="enemy2" parent="enemies" unique_id=767516118 instance=ExtResource("13_ghrvs")]
 position = Vector2(1388, -134)
